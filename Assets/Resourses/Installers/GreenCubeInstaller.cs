@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -33,5 +34,7 @@ public class GreenCubeInstaller : MonoInstaller
 
         _greenCubePresenter = new CubePresenter(model, _greenCubeView);
         _greenCubePlayerInputBroadcaster = new PlayerInputBroadcaster(_input.GreenCube.Move, model);
+        
+        Container.Bind(typeof(IDisposable)).To<CubePresenter>().FromInstance(_greenCubePresenter);
     }
 }

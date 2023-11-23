@@ -11,8 +11,9 @@ public class DistanceMeter : IModel, IDisposable
     private CompositeDisposable _disposable = new CompositeDisposable();
 
     public ReactiveProperty<float> Distance { get; } = new ReactiveProperty<float>();
-
-    public DistanceMeter([Inject(Id = InjectionIDs.RedCubeId)] IMovable targetA, [Inject(Id = InjectionIDs.GreenCubeId)]
+    
+    public DistanceMeter([Inject(Id = InjectionIDs.RedCubeId)] IMovable targetA,
+        [Inject(Id = InjectionIDs.GreenCubeId)]
         IMovable targetB)
     {
         _targets = new KeyValuePair<IMovable, IMovable>(targetA, targetB);
@@ -23,6 +24,7 @@ public class DistanceMeter : IModel, IDisposable
                 return;
 
             Distance.Value = Vector3.Distance(_targets.Key.Position.Value, _targets.Value.Position.Value);
+
         }).AddTo(_disposable);
     }
 

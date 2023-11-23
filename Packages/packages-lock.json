@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.supyrb.signals": {
+      "version": "https://github.com/supyrb/signals.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "640dbb1a51443af3a8e5e1aa1b085c22a4b26cdd"
+    },
     "com.unity.collab-proxy": {
       "version": "2.0.4",
       "depth": 0,

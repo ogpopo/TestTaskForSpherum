@@ -41,6 +41,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resourses\Particle\ParticleMover.cs" />
      <Compile Include="Assets\Resourses\Cube\CubeView.cs" />
      <Compile Include="Assets\Resourses\DistanceMeter\DistanceMeterUIView.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
@@ -52,12 +53,15 @@
      <Compile Include="Assets\Resourses\Cube\Cube.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+     <Compile Include="Assets\Resourses\Particle\ParticleView.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
      <Compile Include="Assets\Resourses\Installers\RedCubeInstaller.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+     <Compile Include="Assets\Resourses\Signals\CubeAdvancedToSecondDistanceSignal.cs" />
+     <Compile Include="Assets\Resourses\Installers\ParticleInstaller.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -69,17 +73,21 @@
      <Compile Include="Assets\Resourses\Abstarct\IMovable.cs" />
      <Compile Include="Assets\Resourses\Abstarct\IModel.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+     <Compile Include="Assets\Resourses\Abstarct\IMovablePattern.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Resourses\Installers\GreenCubeInstaller.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\Resourses\Cube\PlayerInputBroadcaster.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+     <Compile Include="Assets\Resourses\Paterns\PatternMovementToCube.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
      <Compile Include="Assets\Resourses\Cube\GreenCube.cs" />
      <Compile Include="Assets\Resourses\Abstarct\PresenterBase.cs" />
      <Compile Include="Assets\Resourses\Utility\InjectionIDs.cs" />
+     <Compile Include="Assets\Resourses\Particle\ParticleVisibilitor.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
      <Compile Include="Assets\Resourses\DistanceMeter\DistanceMeter.cs" />
+     <Compile Include="Assets\Resourses\Particle\ParticlePresenter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
      <Compile Include="Assets\Resourses\Abstarct\IView.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
@@ -89,6 +97,8 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\Resourses\Particle\Particle.cs" />
      <Compile Include="Assets\Resourses\Cube\SpawnContext.cs" />
+     <Compile Include="Assets\Resourses\Particle\ParticleHolder.cs" />
+     <Compile Include="Assets\Resourses\Signals\CubeAdvancedToFirstDistanceSignal.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -96,18 +106,14 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Resourses\DistanceMeter\DistanceMeterPresenter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-     <Compile Include="Assets\Resourses\Particle\ParticleMover.cs" />
-     <Compile Include="Assets\Resourses\Abstarct\IMovablePattern.cs" />
-     <Compile Include="Assets\Resourses\Installers\ParticleInstaller.cs" />
-     <Compile Include="Assets\Resourses\Particle\ParticleView.cs" />
-     <Compile Include="Assets\Resourses\Particle\ParticlePresenter.cs" />
-     <Compile Include="Assets\Resourses\Paterns\PatternMovementToCube.cs" />
+     <Compile Include="Assets\Resourses\DistanceMeter\SceneMeter.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Resourses\Installers" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <Folder Include="Assets\TextMesh Pro\Examples &amp; Extras\Sprites" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
+     <Folder Include="Assets\Resourses\Signals" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\Resourses\Particle" />
@@ -812,6 +818,9 @@
      <Reference Include="Unity.VisualScripting.Flow.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Supyrb.Signals">
+     <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Supyrb.Signals.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
@@ -839,14 +848,14 @@
      <Reference Include="Unity.VisualScripting.State.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Supyrb.Signals.Logging">
+     <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Supyrb.Signals.Logging.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -856,6 +865,9 @@
      </Reference>
      <Reference Include="Unity.Rider.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow">
+     <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -868,6 +880,9 @@
      </Reference>
      <Reference Include="Unity.EditorCoroutines.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Supyrb.Signals.Editor">
+     <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Supyrb.Signals.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Shared.Editor">
      <HintPath>E:\Project\TestTaskForSpherum\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>

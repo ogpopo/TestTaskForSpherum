@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject", "Zenject.csproj", "{95d6f9cb-f542-1c39-e1f4-58a8dec4c220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRx", "UniRx.csproj", "{a0af6999-24fc-6744-7d66-67ce757b8a0a}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{20b803bd-722c-1ee4-5aab-5d7b8f66cba3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRx", "UniRx.csproj", "{a0af6999-24fc-6744-7d66-67ce757b8a0a}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-IntegrationTests", "Zenject-IntegrationTests.csproj", "{c211d124-7d9e-6ddf-3be2-eaf338591ab2}"
 EndProject
@@ -32,10 +32,10 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{95d6f9cb-f542-1c39-e1f4-58a8dec4c220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95d6f9cb-f542-1c39-e1f4-58a8dec4c220}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{a0af6999-24fc-6744-7d66-67ce757b8a0a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{a0af6999-24fc-6744-7d66-67ce757b8a0a}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20b803bd-722c-1ee4-5aab-5d7b8f66cba3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20b803bd-722c-1ee4-5aab-5d7b8f66cba3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{a0af6999-24fc-6744-7d66-67ce757b8a0a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a0af6999-24fc-6744-7d66-67ce757b8a0a}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c211d124-7d9e-6ddf-3be2-eaf338591ab2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{c211d124-7d9e-6ddf-3be2-eaf338591ab2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18509494-77b6-8353-5457-7b9834676255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

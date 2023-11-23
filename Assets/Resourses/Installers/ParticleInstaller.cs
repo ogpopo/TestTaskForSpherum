@@ -1,18 +1,25 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Resourses.Abstarct;
 using Resourses.Particle;
 using Resourses.Paterns;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class ParticleInstaller : MonoInstaller
 {
-    [SerializeField] private ParticleView _particleViewTemplate;
+    [SerializeField] private ParticleHolder _particleViewHolder;
+
+    private int _particleReceiptIndex;
 
     [Inject(Id = InjectionIDs.RedCubeId)] private IMovable _redCube;
 
     [Inject(Id = InjectionIDs.GreenCubeId)]
     private IMovable _greenCube;
+
+    [Inject] private DistanceMeter _distanceMeter;
 
     public override void InstallBindings()
     {
@@ -33,7 +40,11 @@ public class ParticleInstaller : MonoInstaller
         Container.Bind<IMovablePattern>().To<PatternMovementToCube>().AsSingle();
         Container.Bind<Dictionary<Particle, IMovable>>().FromInstance(modelsWithTargets).AsSingle();
         Container.Bind<ParticleMover>().AsSingle().NonLazy();
-        //var mover = new ParticleMover();
+
+        var particleVisibilitor = new ParticleVisibilitor(_distanceMeter.Distance,
+            _particleViewHolder.ParticlesInHolder.ToList());
+
+        Container.Bind(typeof(IDisposable)).To<ParticleVisibilitor>().FromInstance(particleVisibilitor);
     }
 
     private Particle Create(IMovable own)
@@ -41,13 +52,16 @@ public class ParticleInstaller : MonoInstaller
         var spawnContext = new SpawnContext(own.Position.Value, Random.Range(8, 13));
         var model = new Particle(spawnContext);
 
-        ParticleView view = Container.InstantiatePrefabForComponent<ParticleView>(_particleViewTemplate,
-            own.Position.Value,
-            Quaternion.identity,
-            null);
+        ParticleView view = _particleViewHolder.ParticlesInHolder.ToList()[_particleReceiptIndex];
+
+        view.transform.position = model.Position.Value;
+
+        _particleReceiptIndex++;
 
         var presenter = new ParticlePresenter(model, view);
 
+        Container.Bind(typeof(IDisposable)).To<ParticlePresenter>().FromInstance(presenter);
+        
         return model;
     }
 }

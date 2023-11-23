@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -33,5 +34,7 @@ public class RedCubeInstaller : MonoInstaller
 
         _redCubePresenter = new CubePresenter(model, _redCubeView);
         _redCubePlayerInputBroadcaster = new PlayerInputBroadcaster(_input.RedCube.Move, model);
+        
+        Container.Bind(typeof(IDisposable)).To<CubePresenter>().FromInstance(_redCubePresenter);
     }
 }

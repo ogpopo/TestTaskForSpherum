@@ -40,9 +40,6 @@ public class ParticleMover
         {
             foreach (var (particle, target) in _movingParticlesTheirTargets.ToList())
             {
-                Debug.Log("target " + target.Position.Value);
-                Debug.Log("particle " + particle.Position.Value);
-                Debug.Log("all " + (target.Position.Value - particle.Position.Value));
                 particle.Move((target.Position.Value - particle.Position.Value));
                 CheckTheyHaveReached();
             }
