@@ -10,10 +10,12 @@ public class GreenCubeInstaller : MonoInstaller
 
     [Inject] private PlayerInput _input;
 
+    private readonly string _id = InjectionIDs.GreenCubeId;
+
     private CubeView _greenCubeView;
     private CubePresenter _greenCubePresenter;
 
-    private MovementBroadcaster _greenCubeMovementBroadcaster;
+    private PlayerInputBroadcaster _greenCubePlayerInputBroadcaster;
 
     public override void InstallBindings()
     {
@@ -23,13 +25,13 @@ public class GreenCubeInstaller : MonoInstaller
             Quaternion.identity,
             null);
 
-        var spawnContext = new CubeSpawnContext(position, _cubeSpeed);
+        var spawnContext = new SpawnContext(position, _cubeSpeed);
 
         var model = new GreenCube(spawnContext);
 
-        Container.BindInterfacesAndSelfTo<GreenCube>().FromInstance(model).AsSingle().NonLazy();
+        Container.Bind<IMovable>().WithId(_id).To<Cube>().FromInstance(model);
 
         _greenCubePresenter = new CubePresenter(model, _greenCubeView);
-        _greenCubeMovementBroadcaster = new MovementBroadcaster(_input.GreenCube.Move, model);
+        _greenCubePlayerInputBroadcaster = new PlayerInputBroadcaster(_input.GreenCube.Move, model);
     }
 }

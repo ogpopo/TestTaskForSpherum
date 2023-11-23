@@ -10,10 +10,12 @@ public class RedCubeInstaller : MonoInstaller
 
     [Inject] private PlayerInput _input;
 
+    private string _id = InjectionIDs.RedCubeId;
+
     private CubeView _redCubeView;
     private CubePresenter _redCubePresenter;
 
-    private MovementBroadcaster _redCubeMovementBroadcaster;
+    private PlayerInputBroadcaster _redCubePlayerInputBroadcaster;
 
     public override void InstallBindings()
     {
@@ -23,13 +25,13 @@ public class RedCubeInstaller : MonoInstaller
             Quaternion.identity,
             null);
 
-        var spawnContext = new CubeSpawnContext(position, _cubeSpeed);
+        var spawnContext = new SpawnContext(position, _cubeSpeed);
 
         var model = new RedCube(spawnContext);
 
-        Container.BindInterfacesAndSelfTo<RedCube>().FromInstance(model).AsSingle();
+        Container.Bind<IMovable>().WithId(_id).To<Cube>().FromInstance(model);
 
         _redCubePresenter = new CubePresenter(model, _redCubeView);
-        _redCubeMovementBroadcaster = new MovementBroadcaster(_input.RedCube.Move, model);
+        _redCubePlayerInputBroadcaster = new PlayerInputBroadcaster(_input.RedCube.Move, model);
     }
 }

@@ -3,14 +3,14 @@ using UniRx;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class MovementBroadcaster : IDisposable
+public class PlayerInputBroadcaster : IDisposable
 {
     private InputAction _input;
     private IMovable _movable;
 
     private CompositeDisposable _disposable = new CompositeDisposable();
 
-    public MovementBroadcaster(InputAction input, IMovable movable)
+    public PlayerInputBroadcaster(InputAction input, IMovable movable)
     {
         _input = input;
         _movable = movable;

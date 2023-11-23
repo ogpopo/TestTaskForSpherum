@@ -1,6 +1,6 @@
 ﻿public class RedCube : Cube
 {
-    public RedCube(CubeSpawnContext context) : base(context)
+    public RedCube(SpawnContext context) : base(context)
     {
     }
 }

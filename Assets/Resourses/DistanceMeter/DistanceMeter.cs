@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 public class DistanceMeter : IModel, IDisposable
 {
@@ -11,10 +12,9 @@ public class DistanceMeter : IModel, IDisposable
 
     public ReactiveProperty<float> Distance { get; } = new ReactiveProperty<float>();
 
-    public DistanceMeter(IMovable targetA, IMovable targetB)
+    public DistanceMeter([Inject(Id = InjectionIDs.RedCubeId)] IMovable targetA, [Inject(Id = InjectionIDs.GreenCubeId)]
+        IMovable targetB)
     {
-        Debug.Log("PresenterIsDispose");
-
         _targets = new KeyValuePair<IMovable, IMovable>(targetA, targetB);
 
         Observable.EveryUpdate().Subscribe(_ =>

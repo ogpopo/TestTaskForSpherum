@@ -12,6 +12,6 @@ public class DistanceMeterInstaller : MonoInstaller
     {
         Container.Bind<DistanceMeterUIView>().FromInstance(_meterUIView).AsSingle();
         Container.Bind<DistanceMeter>().FromNew().AsSingle().NonLazy();
-        Container.Bind<DistanceMeterPresenter>().AsSingle();
+        Container.Bind<DistanceMeterPresenter>().AsSingle().NonLazy();
     }
 }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Resourses.DistanceMeter
@@ -9,7 +10,7 @@ namespace Resourses.DistanceMeter
 
         public void OnChangedDistance(float distance)
         {
-            _distanceText.text = distance.ToString();
+            _distanceText.text = Math.Round(distance, 1).ToString();
         }
     }
 }
