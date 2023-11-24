@@ -1,11 +1,14 @@
-﻿public abstract class PresenterBase<T1, T2> where T1 : IModel where T2 : IView
+﻿namespace Resourses.Abstarct
 {
-    protected T1 Model { get; private set; }
-    protected T2 View { get; private set; }
-
-    protected PresenterBase(T1 model, T2 view)
+    public abstract class PresenterBase<T1, T2> where T1 : IModel where T2 : IView
     {
-        Model = model;
-        View = view;
+        protected T1 Model { get; private set; }
+        protected T2 View { get; private set; }
+
+        protected PresenterBase(T1 model, T2 view)
+        {
+            Model = model;
+            View = view;
+        }
     }
 }

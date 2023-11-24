@@ -1,3 +1,6 @@
-﻿public interface IView
+﻿namespace Resourses.Abstarct
 {
+    public interface IView
+    {
+    }
 }

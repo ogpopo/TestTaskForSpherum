@@ -1,48 +1,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using Resourses.Abstarct;
-using Resourses.Particle;
 using UniRx;
 using UnityEngine;
 
-public class ParticleMover
+namespace Resourses.Particle
 {
-    private readonly Dictionary<Particle, IMovable> _movingParticlesTheirTargets;
-    private readonly IMovablePattern _pattern;
-
-    private readonly CompositeDisposable _disposable = new CompositeDisposable();
-
-    public ParticleMover(Dictionary<Particle, IMovable> movingParticlesAndDefaultTargets, IMovablePattern pattern)
+    public class ParticleMover
     {
-        _movingParticlesTheirTargets = new Dictionary<Particle, IMovable>(movingParticlesAndDefaultTargets);
-        _pattern = pattern;
+        private readonly Dictionary<Particle, IMovable> _movingParticlesTheirTargets;
+        private readonly IMovablePattern _pattern;
 
-        SetUpdate();
-    }
+        private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
-    private void CheckTheyHaveReached()
-    {
-        foreach (var (particle, target) in _movingParticlesTheirTargets.ToList())
+        public ParticleMover(Dictionary<Particle, IMovable> movingParticlesAndDefaultTargets, IMovablePattern pattern)
         {
-            if (Vector3.Distance(particle.Position.Value, target.Position.Value) < .2f)
-                SettingANewTarget(particle);
+            _movingParticlesTheirTargets = new Dictionary<Particle, IMovable>(movingParticlesAndDefaultTargets);
+            _pattern = pattern;
+
+            SetUpdate();
         }
-    }
 
-    private void SettingANewTarget(Particle particle)
-    {
-        _movingParticlesTheirTargets[particle] = _pattern.GetNextTarget(_movingParticlesTheirTargets[particle]);
-    }
-
-    private void SetUpdate()
-    {
-        Observable.EveryUpdate().Subscribe(_ =>
+        private void CheckTheyHaveReached()
         {
             foreach (var (particle, target) in _movingParticlesTheirTargets.ToList())
             {
-                particle.Move((target.Position.Value - particle.Position.Value));
-                CheckTheyHaveReached();
+                if (Vector3.Distance(particle.Position.Value, target.Position.Value) < .2f)
+                    SettingANewTarget(particle);
             }
-        }).AddTo(_disposable);
+        }
+
+        private void SettingANewTarget(Particle particle)
+        {
+            _movingParticlesTheirTargets[particle] = _pattern.GetNextTarget(_movingParticlesTheirTargets[particle]);
+        }
+
+        private void SetUpdate()
+        {
+            Observable.EveryUpdate().Subscribe(_ =>
+            {
+                foreach (var (particle, target) in _movingParticlesTheirTargets.ToList())
+                {
+                    particle.Move((target.Position.Value - particle.Position.Value));
+                    CheckTheyHaveReached();
+                }
+            }).AddTo(_disposable);
+        }
     }
 }

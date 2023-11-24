@@ -1,10 +1,13 @@
 ﻿using UniRx;
 using UnityEngine;
 
-public interface IMovable
+namespace Resourses.Abstarct
 {
-    public float Speed { get; }
-    public ReactiveProperty<Vector3> Position { get; }
+    public interface IMovable
+    {
+        public float Speed { get; }
+        public ReactiveProperty<Vector3> Position { get; }
 
-    public void Move(Vector3 direction);
+        public void Move(Vector3 direction);
+    }
 }

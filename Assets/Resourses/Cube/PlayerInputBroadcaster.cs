@@ -1,32 +1,36 @@
 using System;
+using Resourses.Abstarct;
 using UniRx;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class PlayerInputBroadcaster : IDisposable
+namespace Resourses.Cube
 {
-    private InputAction _input;
-    private IMovable _movable;
-
-    private CompositeDisposable _disposable = new CompositeDisposable();
-
-    public PlayerInputBroadcaster(InputAction input, IMovable movable)
+    public class PlayerInputBroadcaster : IDisposable
     {
-        _input = input;
-        _movable = movable;
+        private InputAction _input;
+        private IMovable _movable;
 
-        _input.Enable();
+        private CompositeDisposable _disposable = new CompositeDisposable();
 
-        Observable.EveryUpdate().Subscribe(_ =>
+        public PlayerInputBroadcaster(InputAction input, IMovable movable)
         {
-            var moveDirection = _input.ReadValue<Vector2>().normalized;
+            _input = input;
+            _movable = movable;
 
-            _movable.Move(moveDirection);
-        }).AddTo(_disposable);
-    }
+            _input.Enable();
 
-    public void Dispose()
-    {
-        _disposable.Clear();
+            Observable.EveryUpdate().Subscribe(_ =>
+            {
+                var moveDirection = _input.ReadValue<Vector2>().normalized;
+
+                _movable.Move(moveDirection);
+            }).AddTo(_disposable);
+        }
+
+        public void Dispose()
+        {
+            _disposable.Clear();
+        }
     }
 }

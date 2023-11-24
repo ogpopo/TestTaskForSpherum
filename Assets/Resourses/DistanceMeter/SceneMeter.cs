@@ -11,12 +11,12 @@ namespace Resourses.DistanceMeter
 
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
-        public SceneMeter(global::DistanceMeter distanceMeter)
+        public SceneMeter(DistanceMeter distanceMeter)
         {
             Subscribe(distanceMeter);
         }
 
-        private async void Subscribe(global::DistanceMeter distanceMeter)
+        private async void Subscribe(DistanceMeter distanceMeter)
         {
             await Task.Delay(100);
 

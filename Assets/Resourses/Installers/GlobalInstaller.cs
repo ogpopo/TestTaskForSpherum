@@ -1,10 +1,13 @@
 using Zenject;
 
-public class GlobalInstaller : MonoInstaller
+namespace Resourses.Installers
 {
-    public override void InstallBindings()
+    public class GlobalInstaller : MonoInstaller
     {
-        var input = new PlayerInput();
-        Container.Bind<PlayerInput>().FromInstance(input).AsSingle().NonLazy();
+        public override void InstallBindings()
+        {
+            var input = new PlayerInput();
+            Container.Bind<PlayerInput>().FromInstance(input).AsSingle().NonLazy();
+        }
     }
 }

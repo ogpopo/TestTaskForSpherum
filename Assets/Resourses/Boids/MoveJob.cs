@@ -4,25 +4,28 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Jobs;
 
-[BurstCompile]
-public struct MoveJob : IJobParallelForTransform
+namespace Resourses.Boids
 {
-    public NativeArray<Vector3> Positions;
-    public NativeArray<Vector3> Velocities;
-    public NativeArray<Vector3> Accelerations;
-    public float DeltaTime;
-    public float VelocityLimit;
-    
-    public void Execute(int index, TransformAccess transform)
+    [BurstCompile]
+    public struct MoveJob : IJobParallelForTransform
     {
-        var velocity = Velocities[index] + Accelerations[index] * DeltaTime;
-        var direction = velocity.normalized;
-        velocity = direction * math.clamp(velocity.magnitude, 1, VelocityLimit);
-        transform.position += velocity * DeltaTime;
-        transform.rotation = Quaternion.LookRotation(direction);
+        public NativeArray<Vector3> Positions;
+        public NativeArray<Vector3> Velocities;
+        public NativeArray<Vector3> Accelerations;
+        public float DeltaTime;
+        public float VelocityLimit;
 
-        Positions[index] = transform.position;
-        Velocities[index] = velocity;
-        Accelerations[index] = Vector3.zero;
+        public void Execute(int index, TransformAccess transform)
+        {
+            var velocity = Velocities[index] + Accelerations[index] * DeltaTime;
+            var direction = velocity.normalized;
+            velocity = direction * math.clamp(velocity.magnitude, 1, VelocityLimit);
+            transform.position += velocity * DeltaTime;
+            transform.rotation = Quaternion.LookRotation(direction);
+
+            Positions[index] = transform.position;
+            Velocities[index] = velocity;
+            Accelerations[index] = Vector3.zero;
+        }
     }
 }

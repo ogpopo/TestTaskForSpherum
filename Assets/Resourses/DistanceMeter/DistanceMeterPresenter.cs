@@ -1,18 +1,22 @@
 ﻿using System;
+using Resourses.Abstarct;
 using Resourses.DistanceMeter;
 using UniRx;
 
-public class DistanceMeterPresenter : PresenterBase<DistanceMeter, DistanceMeterUIView>, IDisposable
+namespace Resourses.DistanceMeter
 {
-    private readonly CompositeDisposable _disposable = new CompositeDisposable();
-
-    public DistanceMeterPresenter(DistanceMeter model, DistanceMeterUIView view) : base(model, view)
+    public class DistanceMeterPresenter : PresenterBase<DistanceMeter, DistanceMeterUIView>, IDisposable
     {
-        Model.Distance.Subscribe(View.OnChangedDistance);
-    }
+        private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
-    public void Dispose()
-    {
-        _disposable.Clear();
+        public DistanceMeterPresenter(DistanceMeter model, DistanceMeterUIView view) : base(model, view)
+        {
+            Model.Distance.Subscribe(View.OnChangedDistance);
+        }
+
+        public void Dispose()
+        {
+            _disposable.Clear();
+        }
     }
 }

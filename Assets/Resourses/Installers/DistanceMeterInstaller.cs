@@ -2,17 +2,20 @@ using Resourses.DistanceMeter;
 using UnityEngine;
 using Zenject;
 
-public class DistanceMeterInstaller : MonoInstaller
+namespace Resourses.Installers
 {
-    [SerializeField] private DistanceMeterUIView _meterUIView;
-
-    private DistanceMeterPresenter _meterPresenter;
-
-    public override void InstallBindings()
+    public class DistanceMeterInstaller : MonoInstaller
     {
-        Container.Bind<DistanceMeterUIView>().FromInstance(_meterUIView).AsSingle();
-        Container.Bind<DistanceMeter>().FromNew().AsSingle().NonLazy();
-        Container.Bind<DistanceMeterPresenter>().AsSingle().NonLazy();
-        Container.Bind<SceneMeter>().AsSingle().NonLazy();
+        [SerializeField] private DistanceMeterUIView _meterUIView;
+
+        private DistanceMeterPresenter _meterPresenter;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<DistanceMeterUIView>().FromInstance(_meterUIView).AsSingle();
+            Container.Bind<DistanceMeter.DistanceMeter>().FromNew().AsSingle().NonLazy();
+            Container.Bind<DistanceMeterPresenter>().AsSingle().NonLazy();
+            Container.Bind<SceneMeter>().AsSingle().NonLazy();
+        }
     }
 }

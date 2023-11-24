@@ -1,6 +1,9 @@
-﻿public class GreenCube : Cube
+﻿namespace Resourses.Cube
 {
-    public GreenCube(SpawnContext context) : base(context)
+    public class GreenCube : Cube
     {
+        public GreenCube(SpawnContext context) : base(context)
+        {
+        }
     }
 }

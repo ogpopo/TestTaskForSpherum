@@ -1,9 +1,13 @@
+using Resourses.Abstarct;
 using UnityEngine;
 
-public class ParticleView : MonoBehaviour, IView
+namespace Resourses.Particle
 {
-    public void OnMove(Vector3 newPosition)
+    public class ParticleView : MonoBehaviour, IView
     {
-        transform.position = newPosition;
+        public void OnMove(Vector3 newPosition)
+        {
+            transform.position = newPosition;
+        }
     }
 }

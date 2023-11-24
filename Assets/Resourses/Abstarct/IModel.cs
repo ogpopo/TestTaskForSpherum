@@ -1,3 +1,6 @@
-public interface IModel
+namespace Resourses.Abstarct
 {
+    public interface IModel
+    {
+    }
 }
